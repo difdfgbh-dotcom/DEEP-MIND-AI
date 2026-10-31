@@ -30,7 +30,7 @@ jobs:
           unzip _bundle.zip
           TARGET_DIR=$(find . -name pubspec.yaml -exec dirname {} \;)
           if [ "$TARGET_DIR" != "." ]; then
-            mv $TARGET_DIR/* .
+            cp -r $TARGET_DIR/* .
           fi
 
       - name: Install dependencies
@@ -44,4 +44,5 @@ jobs:
         with:
           name: saleh_al_saleh_deep_mind
           path: build/app/outputs/flutter-apk/app-release.apk
+
 
