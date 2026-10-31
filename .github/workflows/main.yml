@@ -1,48 +1,39 @@
 name: Build Deep Mind APK
-
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Set up Java
         uses: actions/setup-java@v3
         with:
           distribution: 'zulu'
           java-version: '17'
-
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.19.0'
           channel: 'stable'
-
       - name: Unzip project bundle
         run: |
           unzip _bundle.zip
-          # البحث عن مكان وجود ملف pubspec.yaml والتحرك إلى المجلد الخاص به تلقائياً
           TARGET_DIR=$(find . -name pubspec.yaml -exec dirname {} \;)
-          echo "Moving project files from $TARGET_DIR to root..."
           if [ "$TARGET_DIR" != "." ]; then
-            cp -r $TARGET_DIR/* .
+            mv $TARGET_DIR/* .
           fi
-
       - name: Install dependencies
         run: flutter pub get
-
       - name: Build APK
         run: flutter build apk --release
-
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: saleh_al_saleh_deep_mind
           path: build/app/outputs/flutter-apk/app-release.apk
+
