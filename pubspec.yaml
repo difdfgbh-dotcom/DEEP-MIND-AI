@@ -1,26 +1,22 @@
-name: saleh_al_saleh_deep_mind  
-description: "DEEP MIND AI - Application Named and Developed Officially By Saleh Al-Saleh."
+name: deep_mind_ai
+description: DEEP MIND AI - Flutter AI chat application
 publish_to: 'none'
-version: 2.0.0+1
+version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.0 <4.0.0'
+  sdk: '>=3.3.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.6
-  camera: ^0.10.5+5
-  flutter_sound: ^9.3.11
-  path_provider: ^2.1.1
-  sqflite: ^2.3.0
   http: ^1.1.0
-  permission_handler: ^11.1.0
+  cupertino_icons: ^1.0.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 flutter:
   uses-material-design: true
+
